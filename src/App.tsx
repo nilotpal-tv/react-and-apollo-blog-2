@@ -1,7 +1,7 @@
-import { Text } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 
 const App = () => {
-  return <Text>Hello, World</Text>;
+  return <Heading>Hello, World</Heading>;
 };
 
 export default App;
