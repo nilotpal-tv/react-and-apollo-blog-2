@@ -6,5 +6,5 @@ export type EpisodeResult = {
   characters: {
     id: number;
     name: string;
-  };
+  }[];
 };

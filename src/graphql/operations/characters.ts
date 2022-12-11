@@ -29,18 +29,12 @@ const CharacterOperations = {
           status
           species
           gender
-          episode {
-            id
-            name
-            air_date
-          }
           location {
             id
             name
             residents {
               id
               name
-              image
             }
           }
         }
