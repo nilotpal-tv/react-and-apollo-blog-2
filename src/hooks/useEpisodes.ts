@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import CharacterOperations from '../graphql/operations/characters';
+import EpisodeOperations from '../graphql/operations/episodes';
 import { Pagination, PaginationInfo, QueryPaginationInput } from '../types';
 import { EpisodeResult } from '../types/episode';
 
@@ -14,15 +14,15 @@ const useEpisodes = ({ currentPage = 1 }: Pagination) => {
   const { data, fetchMore, loading, error } = useQuery<
     EpisodesResponse,
     QueryPaginationInput
-  >(CharacterOperations.Query.allCharacters, {
+  >(EpisodeOperations.Query.allEpisodes, {
     variables: { page: currentPage },
   });
 
   return {
     loading,
     fetchMore,
-    error: error?.message,
     data: data?.episodes,
+    error: error?.message,
   };
 };
 

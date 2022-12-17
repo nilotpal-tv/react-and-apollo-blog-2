@@ -4,7 +4,7 @@ const EpisodeOperations = {
   Query: {
     allEpisodes: gql`
       query GetAllEpisodes($page: Int) {
-        episodes {
+        episodes(page: $page) {
           results {
             id
             name
@@ -18,10 +18,9 @@ const EpisodeOperations = {
         }
       }
     `,
-
     singleEpisode: gql`
       query GetSingleEpisode($id: ID!) {
-        episode($id: ID!) {
+        episode(id: $id) {
           id
           name
           air_date
