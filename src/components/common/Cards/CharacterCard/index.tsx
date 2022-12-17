@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, Image } from '@chakra-ui/react';
+import { Card, CardBody, HStack, Image } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -15,25 +15,29 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
       <Card
         border="1px"
         borderRadius="md"
-        borderColor="whiteAlpha.200"
-        w={{ base: '100%', lg: '300px' }}
-        boxShadow="rgb(0 0 0 / 15%) 0px 16px 70px"
         transition="all .2s ease"
-        _hover={{ transform: 'scale(1.05)' }}>
-        <CardBody>
-          <Image
-            w="100%"
-            borderRadius="md"
-            src={character.image}
-            alt={character.name + ' image'}
-            h={{ base: '100%', lg: '200px' }}
-          />
-          <Box mt="15px">
-            <Text>{character.name.toUpperCase()}</Text>
-            <Text fontSize="11px" color="whiteAlpha.500" fontWeight="medium">
-              {character.status.toUpperCase()}
-            </Text>
-          </Box>
+        borderColor="whiteAlpha.200"
+        w="300px"
+        _hover={{ transform: 'scale(1.05)' }}
+        boxShadow="rgb(0 0 0 / 15%) 0px 16px 70px">
+        <CardBody display="flex" flexDir="column" justifyContent="center">
+          <HStack gap={4} h="70px">
+            <Image
+              src={character.image}
+              w="50px"
+              h="50px"
+              borderRadius="full"
+            />
+            <div>
+              <Text>{character.name.toUpperCase()}</Text>
+              <Text fontSize="11px" color="whiteAlpha.500" fontWeight="medium">
+                {character.gender.toUpperCase()}
+              </Text>
+              <Text fontSize="11px" color="whiteAlpha.500" fontWeight="medium">
+                {character.status.toUpperCase()}
+              </Text>
+            </div>
+          </HStack>
         </CardBody>
       </Card>
     </Link>

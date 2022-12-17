@@ -8,8 +8,9 @@ const CharacterOperations = {
           results {
             id
             name
-            image
             status
+            gender
+            image
           }
           info {
             count
@@ -18,7 +19,6 @@ const CharacterOperations = {
         }
       }
     `,
-
     singleCharacter: gql`
       query GetSingleCharacter($id: ID!) {
         character(id: $id) {

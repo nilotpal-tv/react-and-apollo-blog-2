@@ -14,6 +14,7 @@ const Border = () => {
     <ul style={{ listStyle: 'none', display: 'flex' }}>
       {ITEMS.map((_, i) => (
         <li
+          key={i}
           style={{ background: BG_COLORS[i], height: '8px', width: '100%' }}
         />
       ))}
