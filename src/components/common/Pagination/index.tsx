@@ -1,4 +1,4 @@
-import { HStack, Text } from '@chakra-ui/react';
+import { HStack, Text, useMediaQuery } from '@chakra-ui/react';
 import React from 'react';
 
 type PaginationProps = {
@@ -14,12 +14,15 @@ const Pagination: React.FC<PaginationProps> = ({
   onNext,
   onPrevious,
 }) => {
+  const [isSmall] = useMediaQuery('(max-width: 360px)');
+
   if (itemsCount === 1) return null;
-
-  console.log(itemsCount);
-
   return (
-    <HStack w="container.lg" gap={2} flexWrap="wrap" justifyContent="center">
+    <HStack
+      w="container.lg"
+      gap={2}
+      flexDir={isSmall ? 'column' : 'row'}
+      justifyContent="center">
       <Text
         w="80px"
         py="7px"
