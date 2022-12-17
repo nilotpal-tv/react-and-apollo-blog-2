@@ -14,7 +14,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
     <Link to={`/${character.id}`}>
       <Card
         border="1px"
-        borderRadius="lg"
+        borderRadius="md"
         bgColor="#242631"
         borderColor="whiteAlpha.200"
         w={{ base: '100%', lg: '300px' }}>
