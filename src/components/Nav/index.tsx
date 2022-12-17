@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navigation = () => {
   return (
-    <HStack justifyContent="center" pt={8} gap={5}>
+    <HStack justifyContent="center" pt={10} pb={3} gap={5}>
       <NavLink
         to="/"
         style={({ isActive }) => ({

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import ColorfulBorder from './components/Border';
 import Navigation from './components/Nav';
 import EpisodesPage from './pages/Episodes';
 import EpisodePage from './pages/Episodes/Episode';
@@ -9,6 +10,7 @@ import CharacterPage from './pages/Home/Character';
 const App = () => {
   return (
     <Router>
+      <ColorfulBorder />
       <Navigation />
       <Routes>
         <Route path="/">

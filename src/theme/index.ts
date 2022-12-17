@@ -8,10 +8,10 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        color: '#858699',
-        bgColor: '#1d1e2b',
         width: '100%',
         minHeight: '100%',
+        color: '#858699',
+        bgColor: '#141517',
       },
     },
   },

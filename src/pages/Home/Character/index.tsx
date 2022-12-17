@@ -13,10 +13,10 @@ const CharacterPage = () => {
 
   return (
     <ErrorBoundary error={error}>
+      <BackButton mb="15px" />
       {loading && <PageSkeleton />}
       {!loading && (
         <>
-          <BackButton mb="15px" />
           <Image
             src={data?.image}
             width="100%"

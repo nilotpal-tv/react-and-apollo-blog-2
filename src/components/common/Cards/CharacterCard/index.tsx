@@ -15,9 +15,11 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character }) => {
       <Card
         border="1px"
         borderRadius="md"
-        bgColor="#242631"
         borderColor="whiteAlpha.200"
-        w={{ base: '100%', lg: '300px' }}>
+        w={{ base: '100%', lg: '300px' }}
+        boxShadow="rgb(0 0 0 / 15%) 0px 16px 70px"
+        transition="all .2s ease"
+        _hover={{ transform: 'scale(1.05)' }}>
         <CardBody>
           <Image
             w="100%"
