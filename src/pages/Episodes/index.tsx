@@ -10,10 +10,7 @@ const EpisodesPage = () => {
 
   return (
     <Center flexWrap="wrap" p="30px" gap={6}>
-      {loading &&
-        new Array(20)
-          .fill('')
-          .map((_, i) => <CardSkeleton key={i} showCircle={false} />)}
+      {loading && <CardSkeleton showCircle={false} items={20} />}
       {data?.results.map((episode) => {
         return <EpisodeCard episode={episode} key={episode.id} />;
       })}

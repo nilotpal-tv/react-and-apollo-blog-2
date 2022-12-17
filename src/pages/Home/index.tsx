@@ -9,8 +9,7 @@ const HomePage = () => {
 
   return (
     <Center flexWrap="wrap" p="30px" gap={6}>
-      {loading &&
-        new Array(20).fill('').map((_, i) => <CardSkeleton key={i} />)}
+      {loading && <CardSkeleton items={20} />}
       {data?.results.map((character) => {
         return <CharacterCard character={character} key={character.id} />;
       })}
