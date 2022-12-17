@@ -2,22 +2,22 @@ import { Skeleton, SkeletonText, Spinner, Stack } from '@chakra-ui/react';
 
 const PageSkeleton = () => {
   return (
-    <Stack w="700px">
-      <Skeleton h="sm" w="85%" mb="5" />
+    <Stack w={{ base: '100%', lg: '700px' }}>
+      <Skeleton h="sm" w={{ base: '100%', lg: '85%' }} mb="5" />
       <SkeletonText
         mt="3"
-        w="250px"
         spacing="2"
         noOfLines={2}
         skeletonHeight="3"
+        w={{ base: '200px', lg: '300px' }}
       />
       <div>
         <SkeletonText
           mt="10px"
-          w="150px"
           spacing="2"
           noOfLines={2}
           skeletonHeight="3"
+          w={{ base: '120px', lg: '180px' }}
         />
       </div>
       <div>

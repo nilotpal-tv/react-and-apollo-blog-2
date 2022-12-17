@@ -1,4 +1,11 @@
-import { Box, Flex, HStack, Image, Tag, TagLabel } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Image,
+  Tag,
+  TagLabel,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import { Link, useParams } from 'react-router-dom';
 
 import BackButton from '../../../components/common/BackButton';
@@ -10,6 +17,7 @@ import ErrorBoundary from '../../../layout/ErrorBoundary';
 const CharacterPage = () => {
   const { id } = useParams();
   const { data, loading, error } = useCharacter({ id: Number(id) });
+  const [isSmall] = useMediaQuery('(max-width: 460px)');
 
   return (
     <ErrorBoundary error={error}>
@@ -20,20 +28,20 @@ const CharacterPage = () => {
           <Image
             src={data?.image}
             width="100%"
-            height="360px"
+            height={{ base: 'xs', lg: '360px' }}
             borderRadius="sm"
             boxShadow="rgb(0 0 0 / 30%) 0px 16px 70px"
           />
           <Box mt="10px">
             <Text fontSize="35px">{data?.name.toUpperCase()}</Text>
-            <HStack gap={2}>
+            <Flex gap={2} flexDir={isSmall ? 'column' : 'row'}>
               <Text color="whiteAlpha.600">{data?.gender.toUpperCase()}</Text>
               <Text color="whiteAlpha.600">{data?.status.toUpperCase()}</Text>
               {data?.type && (
                 <Text color="whiteAlpha.600">{data?.type.toUpperCase()}</Text>
               )}
               <Text color="whiteAlpha.600">{data?.species.toUpperCase()}</Text>
-            </HStack>
+            </Flex>
             <Box mt="15px">
               <Text color="whiteAlpha.700" mb="5px">
                 Location
