@@ -3,7 +3,11 @@ import { Skeleton, SkeletonText, Spinner, Stack } from '@chakra-ui/react';
 const PageSkeleton = () => {
   return (
     <Stack w={{ base: '100%', lg: '700px' }}>
-      <Skeleton h="sm" w={{ base: '100%', lg: '85%' }} mb="5" />
+      <Skeleton
+        h={{ base: 'xs', lg: 'sm' }}
+        w={{ base: '100%', lg: '85%' }}
+        mb="5"
+      />
       <SkeletonText
         mt="3"
         spacing="2"
