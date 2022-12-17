@@ -1,40 +1,47 @@
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  Image,
-  Tag,
-  TagLabel,
-  Text,
-} from '@chakra-ui/react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import PageSkeleton from '../../../components/Skeleton/PageSkeleton';
+import { Box, Flex, HStack, Image, Tag, TagLabel } from '@chakra-ui/react';
+import { Link, useParams } from 'react-router-dom';
+
+import BackButton from '../../../components/common/BackButton';
+import PageSkeleton from '../../../components/common/Skeleton/PageSkeleton';
+import Text from '../../../components/common/Text';
 import useCharacter from '../../../hooks/useCharacter';
+import ErrorBoundary from '../../../layout/ErrorBoundary';
 
 const CharacterPage = () => {
   const { id } = useParams();
-  const { data, loading } = useCharacter({ id: Number(id) });
-  const navigate = useNavigate();
+  const { data, loading, error } = useCharacter({ id: Number(id) });
 
   return (
-    <Center p="30px" bgColor="#231f20" minH="100vh">
-      <Button size="sm" alignSelf="flex-start" onClick={() => navigate(-1)}>
-        &#8592; Back
-      </Button>
+    <ErrorBoundary error={error}>
       {loading && <PageSkeleton />}
       {!loading && (
-        <Box flexDirection="column" w="700px">
-          <Image src={data?.image} />
-          <Box mt="30px">
-            <Text color="gray.300">{data?.name}</Text>
-            <Text color="gray.300">{data?.gender}</Text>
-            <Text color="gray.300">{data?.status}</Text>
-            <Text color="gray.300">{data?.type}</Text>
-            <Box>
-              <Text color="gray.300">Location</Text>
-              <Text color="gray.300">{data?.location.name}</Text>
-              <Flex wrap="wrap" gap={1}>
+        <>
+          <BackButton mb="15px" />
+          <Image
+            src={data?.image}
+            width="100%"
+            height="360px"
+            borderRadius="sm"
+            boxShadow="rgb(0 0 0 / 30%) 0px 16px 70px"
+          />
+          <Box mt="10px">
+            <Text fontSize="35px">{data?.name.toUpperCase()}</Text>
+            <HStack gap={2}>
+              <Text color="whiteAlpha.600">{data?.gender.toUpperCase()}</Text>
+              <Text color="whiteAlpha.600">{data?.status.toUpperCase()}</Text>
+              {data?.type && (
+                <Text color="whiteAlpha.600">{data?.type.toUpperCase()}</Text>
+              )}
+              <Text color="whiteAlpha.600">{data?.species.toUpperCase()}</Text>
+            </HStack>
+            <Box mt="15px">
+              <Text color="whiteAlpha.700" mb="5px">
+                Location
+              </Text>
+              <Text color="whiteAlpha.600">
+                {data?.location.name.toUpperCase()}
+              </Text>
+              <Flex wrap="wrap" gap={1.5} mt="10px">
                 {data?.location?.residents?.map((resident) => (
                   <Link to={`/${resident.id}`} key={resident.id}>
                     <Tag size="sm" variant="subtle" colorScheme="whiteAlpha">
@@ -45,9 +52,9 @@ const CharacterPage = () => {
               </Flex>
             </Box>
           </Box>
-        </Box>
+        </>
       )}
-    </Center>
+    </ErrorBoundary>
   );
 };
 
