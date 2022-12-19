@@ -1,7 +1,7 @@
-import { Card, CardBody } from '@chakra-ui/react';
+import { Card, CardBody, useDisclosure } from '@chakra-ui/react';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { EpisodeResult } from '../../../../types/episode';
+import EpisodeModal from '../../../EpisodeModal';
 import Text from '../../Text';
 
 type EpisodeCardProps = {
@@ -9,9 +9,13 @@ type EpisodeCardProps = {
 };
 
 const EpisodeCard: React.FC<EpisodeCardProps> = ({ episode }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Link to={`/episodes/${episode.id}`}>
+    <>
       <Card
+        cursor="pointer"
+        onClick={() => onOpen()}
         border="1px"
         borderRadius="md"
         borderColor="whiteAlpha.200"
@@ -34,7 +38,8 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({ episode }) => {
           </Text>
         </CardBody>
       </Card>
-    </Link>
+      <EpisodeModal isOpen={isOpen} onClose={onClose} id={episode.id} />
+    </>
   );
 };
 

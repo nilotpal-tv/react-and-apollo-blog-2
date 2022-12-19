@@ -1,13 +1,10 @@
 import { useQuery } from '@apollo/client';
 import EpisodeOperations from '../graphql/operations/episodes';
-import { PaginationInfo, QueryInput } from '../types';
+import { QueryInput } from '../types';
 import { EpisodeResult } from '../types/episode';
 
 export type EpisodeResponse = {
-  episode: {
-    results: EpisodeResult;
-    info: PaginationInfo;
-  };
+  episode: EpisodeResult;
 };
 
 const useEpisode = ({ id = 1 }: QueryInput) => {

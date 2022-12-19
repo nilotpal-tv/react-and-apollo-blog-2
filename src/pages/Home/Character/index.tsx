@@ -26,10 +26,12 @@ const CharacterPage = () => {
       {!loading && (
         <>
           <Image
-            src={data?.image}
+            blur="md"
             width="100%"
-            height={{ base: 'xs', lg: '360px' }}
+            src={data?.image}
             borderRadius="sm"
+            alt={data?.name + ' image'}
+            height={{ base: 'xs', lg: '360px' }}
             boxShadow="rgb(0 0 0 / 30%) 0px 16px 70px"
           />
           <Box mt="10px">
